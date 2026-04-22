@@ -1,5 +1,7 @@
 # FuntrekRD - Dominican Travel System
 
+![Website Preview](public/assets/images/readme/preview.png)
+
 ## Overview
 FuntrekRD is a professional web-based management system for travel agencies. Developed with an MVC architecture in PHP, it provides a robust suite of tools for managing tourist packages, excursions, transfers, and professional quotations.
 
