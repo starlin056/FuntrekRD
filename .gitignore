@@ -5,7 +5,8 @@
 /public/assets/uploads/transfers/*
 /public/assets/uploads/proposals/*
 /public/uploads/*
+config/config.php
+# Ignorar archivos del sistema
 .DS_Store
 Thumbs.db
 *.tmp
-# config/config.php  <-- Comentado por si el repositorio es privado, pero se recomienda ignorar en repositorios públicos.
