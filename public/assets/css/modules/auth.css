@@ -1,0 +1,288 @@
+/* 
+ * Dominican Travel Agency - Auth Module Styles
+ * Design System: Modern Caribe Premium
+ */
+
+:root {
+    --auth-bg: #f8fafc;
+    --auth-card-bg: rgba(255, 255, 255, 0.95);
+    --auth-primary: #0077B6;
+    --auth-primary-light: #00B4D8;
+    --auth-text: #0D1B2A;
+    --auth-muted: #6E8FA5;
+    --auth-border: rgba(0, 119, 182, 0.12);
+    --auth-radius: 26px;
+    --auth-shadow: 0 20px 50px rgba(0, 45, 79, 0.08);
+}
+
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: #F0F7FC;
+    background: linear-gradient(135deg, #F0F7FC 0%, #EAF6FF 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Elementos decorativos de fondo */
+.auth-wrapper::before,
+.auth-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.4;
+}
+
+.auth-wrapper::before {
+    background: var(--auth-primary-light);
+    top: -100px;
+    left: -100px;
+}
+
+.auth-wrapper::after {
+    background: #A9D6E5;
+    bottom: -100px;
+    right: -100px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-container.register {
+    max-width: 600px;
+}
+
+.auth-card {
+    background: var(--auth-card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--auth-border);
+    border-radius: var(--auth-radius);
+    padding: 40px;
+    box-shadow: var(--auth-shadow);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.auth-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--auth-text);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.auth-subtitle {
+    font-size: 0.95rem;
+    color: var(--auth-muted);
+}
+
+.auth-form-group {
+    margin-bottom: 22px;
+}
+
+.auth-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--auth-text);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 16px;
+    border: 1.5px solid var(--auth-border);
+    background: #fff;
+    font-size: 0.95rem;
+    color: var(--auth-text);
+    transition: all 0.3s cubic-bezier(.22, 1, .36, 1);
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: var(--auth-primary);
+    box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--auth-primary), var(--auth-primary-light));
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Sora', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(0, 119, 182, 0.2);
+    margin-top: 10px;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 119, 182, 0.3);
+    filter: brightness(1.1);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: var(--auth-muted);
+}
+
+.auth-link {
+    color: var(--auth-primary);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.auth-link:hover {
+    color: var(--auth-primary-light);
+    text-decoration: underline;
+}
+
+/* Password Requirements Indicator */
+.auth-requirements {
+    background: rgba(0, 119, 182, 0.04);
+    padding: 18px;
+    border-radius: 18px;
+    margin-top: 12px;
+    border: 1px solid rgba(0, 119, 182, 0.08);
+}
+
+.auth-req-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--auth-text);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.auth-req-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+@media (max-width: 500px) {
+    .auth-req-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.auth-req-item {
+    font-size: 0.78rem;
+    color: var(--auth-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.auth-req-item i {
+    font-size: 14px;
+    color: #cbd5e1; /* slate-300 placeholder color */
+    transition: all 0.3s ease;
+}
+
+.auth-req-item.valid {
+    color: #16a34a; /* green-600 */
+    font-weight: 500;
+}
+
+.auth-req-item.valid i {
+    color: #16a34a;
+}
+
+.auth-req-item.invalid {
+    color: #dc2626; /* red-600 */
+}
+
+.auth-req-item.invalid i {
+    color: #dc2626;
+}
+
+/* Password Match Message */
+.auth-match-msg {
+    font-size: 0.8rem;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.auth-match-msg.text-success { color: #16a34a; }
+.auth-match-msg.text-danger { color: #dc2626; }
+
+/* Password Strength Bar */
+.auth-strength-meter {
+    height: 4px;
+    width: 100%;
+    background: #e2e8f0;
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.auth-strength-bar {
+    height: 100%;
+    width: 0;
+    transition: all 0.4s ease;
+}
+
+.strength-0 { width: 0; background: transparent; }
+.strength-1 { width: 25%; background: #ef4444; }
+.strength-2 { width: 50%; background: #f59e0b; }
+.strength-3 { width: 75%; background: #3b82f6; }
+.strength-4 { width: 100%; background: #10b981; }
+
+/* Alerts Styling */
+.alert {
+    border-radius: 16px;
+    font-size: 0.9rem;
+    padding: 12px 18px;
+    margin-bottom: 25px;
+    border: none;
+}
+
+/* Animate Slide Definitions if not present in custom.css */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}

@@ -1,0 +1,237 @@
+/**
+ * ======================================================
+ *    VARIABLES DE COLOR
+ * ======================================================
+ *
+ * @format
+ */
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+
+  --header-bg: #004080;
+  --header-text: #ffffff;
+
+  --navbar-height: 90px;
+}
+
+/* ======================================================
+   RESET BÁSICO
+====================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======================================================
+   BODY / LAYOUT GLOBAL
+====================================================== */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+
+  /* COMPENSA NAVBAR FIXED */
+  padding-top: var(--navbar-height);
+}
+
+/* ======================================================
+   NAVBAR (SOLO CLASES, NO nav GLOBAL)
+====================================================== */
+.navbar {
+  z-index: 1050;
+}
+
+.navbar,
+.navbar * {
+  overflow: visible !important;
+}
+
+/* Dropdowns visibles */
+.dropdown-menu {
+  z-index: 1055;
+}
+
+/* ======================================================
+   CONTENEDORES
+====================================================== */
+.container {
+  max-width: 1200px;
+}
+
+/* ======================================================
+   TARJETAS
+====================================================== */
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* ======================================================
+   BOTONES
+====================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.btn-orange {
+  color: #ff6600;
+  border: 1px solid #ff6600;
+  background-color: transparent;
+}
+
+.btn-orange:hover {
+  background-color: #ff6600;
+  color: #fff;
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+footer {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 992px) {
+  .card img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card img {
+    height: 150px;
+  }
+
+  :root {
+    --bg-color: #d1e8ff;
+    --shadow-light: #f0fbff;
+    --shadow-dark: #a6b9cc;
+    --accent-color: #0077b6;
+  }
+
+  /* Contenedor para las animaciones */
+  .animate-slide-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  /* Animación desde la Derecha (Para Register) */
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Animación desde la Izquierda (Para Login) */
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Estilo Neumórfico aplicado a las cards de Bootstrap */
+  .neumorphic-card {
+    background-color: var(--bg-color) !important;
+    border-radius: 30px !important;
+    box-shadow:
+      9px 9px 16px var(--shadow-dark),
+      -9px -9px 16px var(--shadow-light) !important;
+    border: none !important;
+  }
+
+  .neumorphic-input {
+    background-color: var(--bg-color) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    box-shadow:
+      inset 5px 5px 10px var(--shadow-dark),
+      inset -5px -5px 10px var(--shadow-light) !important;
+    padding: 12px 20px !important;
+  }
+
+  .btn-neu {
+    background-color: var(--bg-color) !important;
+    color: var(--accent-color) !important;
+    font-weight: bold !important;
+    border-radius: 50px !important;
+    border: none !important;
+    box-shadow:
+      5px 5px 10px var(--shadow-dark),
+      -5px -5px 10px var(--shadow-light) !important;
+    transition: all 0.2s ease;
+  }
+
+  .btn-neu:active {
+    box-shadow:
+      inset 3px 3px 7px var(--shadow-dark),
+      inset -3px -3px 7px var(--shadow-light) !important;
+  }
+}

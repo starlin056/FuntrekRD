@@ -1,0 +1,72 @@
+# Plan de Implementación: Seguridad Reforzada y Restablecimiento de Contraseña
+
+Este plan detalla las mejoras de seguridad para el manejo de cuentas, incluyendo la validación robusta de contraseñas (Regex) y un sistema completo de recuperación de contraseña vía email.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Se requiere acceso a una base de datos funcional para ejecutar los `ALTER TABLE`. 
+> El sistema de correos ya utiliza PHPMailer con una cuenta de Gmail; se asume que las credenciales en `app/core/Email.php` son válidas para entorno de desarrollo/producción.
+
+## Proposed Changes
+
+### 1. Base de Datos (Seguridad de Sesión y Recuperación)
+
+#### [MODIFY] `users` (vía comando SQL)
+Añadir campos necesarios para el flujo de recuperación.
+- `reset_token` VARCHAR(255) NULL
+- `reset_token_expires` DATETIME NULL
+
+### 2. Capa de Datos (Modelo)
+
+#### [MODIFY] [User.php](file:///c:/xampp/htdocs/dominican_travel/app/models/User.php)
+- Confirmar que `create` y `updateProfile` sigan usando `password_hash`.
+- Añadir método `setResetToken(email, token, expires)`: Guarda el token generado.
+- Añadir método `validateResetToken(token)`: Busca el usuario por token y verifica expiración.
+- Añadir método `updatePasswordByToken(token, new_password)`: Cambia contraseña y limpia el token.
+
+### 3. Capa de Lógica (Controlador de Autenticación)
+
+#### [MODIFY] [AuthController.php](file:///c:/xampp/htdocs/dominican_travel/app/controllers/AuthController.php)
+- **Validación Backend**: Implementar método `validatePasswordComplexity($password)` con Regex:
+  - `(?=.*[a-z])` (minúscula)
+  - `(?=.*[A-Z])` (mayúscula)
+  - `(?=.*[0-9])` (número)
+  - `(?=.*[!@#$%^&*])` (carácter especial)
+  - Longitud 8-16.
+- **Forgot Password**:
+  - `forgotPassword()`: Muestra formulario de ingreso de email.
+  - `sendResetLink()`: Genera token, guarda en DB y envía email.
+- **Reset Password**:
+  - `resetPassword($token)`: Valida token, muestra form de nueva clave.
+  - `updatePassword()`: Procesa el cambio con las nuevas validaciones.
+
+### 4. Capa de Servicio (Email)
+
+#### [MODIFY] [Email.php](file:///c:/xampp/htdocs/dominican_travel/app/core/Email.php)
+- Añadir método `sendPasswordResetEmail($to, $link)` con una plantilla profesional (compatible con el diseño visual del sitio).
+
+### 5. Interfaz de Usuario (Views y JavaScript)
+
+#### [MODIFY] [register.php](file:///c:/xampp/htdocs/dominican_travel/app/views/auth/register.php)
+- Añadir **Checklist Visual** debajo del campo password.
+- **JavaScript**: Validación en tiempo real (keyup) que marque checks en verde/rojo según cumpla los requisitos.
+
+#### [NEW] `app/views/auth/forgot_password.php`
+- Formulario limpio para solicitar el link.
+
+#### [NEW] `app/views/auth/reset_password.php`
+- Formulario para establecer la nueva clave, también con Checklist Visual.
+
+## Verification Plan
+
+### Automated Tests
+- No hay suite de tests automatizados detectada, se usará verificación manual exhaustiva.
+
+### Manual Verification
+1. **Registro**: Intentar registrar una clave simple (ej. "123456"). El sistema debe rechazarla en frontend (visual) y backend (error).
+2. **Olvidé Contraseña**: Solicitar link para un email existente. Verificar recepción (logs de PHPMailer).
+3. **Uso de Token**: Acceder al link. Verificar que si el token expira o es inválido, redirija a error.
+4. **Cambio de Clave**: Completar el flujo. Iniciar sesión con la nueva clave.
+5. **Seguridad**: Verificar en DB que la clave esté hasheada y el token se haya eliminado tras el uso.
+6. **Hashing**: Confirmar que no se guarde nada en texto plano al usar `password_hash(..., PASSWORD_DEFAULT)`.

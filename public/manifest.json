@@ -1,0 +1,25 @@
+{
+  "name": "Dominican Travel",
+  "short_name": "DomTravel",
+  "description": "Tu mejor experiencia de viaje en República Dominicana",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#0077B6",
+  "id": "/dominican_travel/",
+  "icons": [
+    {
+      "src": "assets/images/pwa-icon-512.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

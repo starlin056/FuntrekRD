@@ -1,0 +1,46 @@
+# Plan de Refactorización de Arquitectura CSS
+
+## Objetivo del Sistema
+El objetivo principal es mejorar radicalmente la **escalabilidad, limpieza y seguridad** del proyecto. Actualmente existen más de 30 archivos `.php` que contienen enormes bloques de código CSS dentro de etiquetas `<style>`.
+
+Esta práctica no solo hace pesados los archivos y difíciles de mantener, sino que aumenta los riesgos de ataques XSS (ya que impide activar reglas estrictas de CSP: Content Security Policy que bloquean scripts/estilos incrustados). De acuerdo a lo solicitado, vamos a extraer este CSS y colocarlo en archivos externos.
+
+## User Review Required
+
+> [!IMPORTANT]  
+> Dado que son **más de 30 vistas** con estilos incrustados, realizar el proceso todo de golpe en un solo archivo `style.css` crearía un archivo inmanejable de más de 15,000 líneas.
+>
+> **Mi propuesta de Arquitectura Modular:** 
+> 1. Crearemos una carpeta en `public/assets/css/modules/`.
+> 2. Modificaremos el `header.php` para que pueda recibir un arreglo de archivos requeridos (ej. `$customCss = ['packages.css'];`).
+> 3. Al acceder a Paquetes, se carga *solo* el CSS necesario para paquetes; al acceder al Admin, solo el del Admin. Esto garantiza una fluidez absoluta en la carga del sistema.
+
+## Fases Propuestas
+
+### Fase 1: Preparación del Motor (Layouts)
+#### [MODIFY] [layouts/header.php](file:///c:/xampp/htdocs/dominican_travel/app/views/layouts/header.php)
+- Se inyectará un bloque de código PHP pequeño dentro de la etiqueta `<head>` que leerá un arreglo `$customCss` (si existe) y generará los `<link rel="stylesheet">` correspondientes antes de cerrar el head.
+
+#### [NEW] [Directorio CSS](file:///c:/xampp/htdocs/dominican_travel/public/assets/css)
+- Se creará el subdirectorio `modules/` dentro del folder CSS actual para albergar los modulos estilizados.
+
+### Fase 2: Módulos Públicos (Frontend)
+Extraeremos el CSS, limpiaremos el HTML/PHP y crearemos sus respectivos archivos globales en la carpeta modules:
+- Vistas a modificar: `home/index.php`, `packages/index.php`, `excursions/index.php`, `transfers/index.php`.
+- Creación de: `modules/public-home.css`, `modules/public-packages.css`, `modules/public-excursions.css`, etc.
+
+### Fase 3: Módulos Administrativos (Backend)
+Extraeremos el CSS de todas las tablas y formularios administrativos. Debido a la reiteración del código para los paneles, agruparemos estilos similares.
+- Vistas a modificar: Todas las de la carpeta `app/views/admin/` (ej: `dashboard.php`, `create.php`, `edit.php`, `index.php` para todos los modelos).
+- Creación de: `modules/admin-dashboard.css`, `modules/admin-forms.css`, `modules/admin-tables.css`.
+
+### Fase 4: Auth y Herramientas (Login / Register / Contact)
+- Extraer estilos de autenticación a `modules/auth.css` y contacto a `modules/contact.css`.
+
+## Proceso Operativo
+
+Avanzaré fase por fase. Al terminar de extraer cada bloque, verificaré que los estilos sigan siendo consistentes al visualizar los módulos a través de peticiones simuladas (verificando tamaño de la respuesta web).
+
+## Aprobación
+
+Por favor reviste este plan tecnológico. Si te parece correcto el enfoque dinámico y modular del CSS, confírmalo para iniciar con la Fase 1 y 2 inmediatamente.

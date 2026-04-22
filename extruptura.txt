@@ -1,0 +1,231 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 14C5-980B
+C:.
+│   .htaccess
+│   extruptura.txt
+│   index.php
+│   
+├───app
+│   ├───controllers
+│   │       AdminController.php
+│   │       AuthController.php
+│   │       BookingController.php
+│   │       ContactController.php
+│   │       DashboardController.php
+│   │       ExcursionsController.php
+│   │       HomeController.php
+│   │       PaquetesController.php
+│   │       TransfersController.php
+│   │       
+│   ├───core
+│   │   │   Controller.php
+│   │   │   Database.php
+│   │   │   Email.php
+│   │   │   Model.php
+│   │   │   Router.php
+│   │   │   Translator.php
+│   │   │   
+│   │   └───PHPMailer
+│   │       │   COMMITMENT
+│   │       │   composer.json
+│   │       │   get_oauth_token.php
+│   │       │   LICENSE
+│   │       │   README.md
+│   │       │   SECURITY.md
+│   │       │   SMTPUTF8.md
+│   │       │   VERSION
+│   │       │   
+│   │       ├───language
+│   │       │       phpmailer.lang-af.php
+│   │       │       phpmailer.lang-ar.php
+│   │       │       phpmailer.lang-as.php
+│   │       │       phpmailer.lang-az.php
+│   │       │       phpmailer.lang-ba.php
+│   │       │       phpmailer.lang-be.php
+│   │       │       phpmailer.lang-bg.php
+│   │       │       phpmailer.lang-bn.php
+│   │       │       phpmailer.lang-ca.php
+│   │       │       phpmailer.lang-cs.php
+│   │       │       phpmailer.lang-da.php
+│   │       │       phpmailer.lang-de.php
+│   │       │       phpmailer.lang-el.php
+│   │       │       phpmailer.lang-eo.php
+│   │       │       phpmailer.lang-es.php
+│   │       │       phpmailer.lang-et.php
+│   │       │       phpmailer.lang-fa.php
+│   │       │       phpmailer.lang-fi.php
+│   │       │       phpmailer.lang-fo.php
+│   │       │       phpmailer.lang-fr.php
+│   │       │       phpmailer.lang-gl.php
+│   │       │       phpmailer.lang-he.php
+│   │       │       phpmailer.lang-hi.php
+│   │       │       phpmailer.lang-hr.php
+│   │       │       phpmailer.lang-hu.php
+│   │       │       phpmailer.lang-hy.php
+│   │       │       phpmailer.lang-id.php
+│   │       │       phpmailer.lang-it.php
+│   │       │       phpmailer.lang-ja.php
+│   │       │       phpmailer.lang-ka.php
+│   │       │       phpmailer.lang-ko.php
+│   │       │       phpmailer.lang-ku.php
+│   │       │       phpmailer.lang-lt.php
+│   │       │       phpmailer.lang-lv.php
+│   │       │       phpmailer.lang-mg.php
+│   │       │       phpmailer.lang-mn.php
+│   │       │       phpmailer.lang-ms.php
+│   │       │       phpmailer.lang-nb.php
+│   │       │       phpmailer.lang-nl.php
+│   │       │       phpmailer.lang-pl.php
+│   │       │       phpmailer.lang-pt.php
+│   │       │       phpmailer.lang-pt_br.php
+│   │       │       phpmailer.lang-ro.php
+│   │       │       phpmailer.lang-ru.php
+│   │       │       phpmailer.lang-si.php
+│   │       │       phpmailer.lang-sk.php
+│   │       │       phpmailer.lang-sl.php
+│   │       │       phpmailer.lang-sr.php
+│   │       │       phpmailer.lang-sr_latn.php
+│   │       │       phpmailer.lang-sv.php
+│   │       │       phpmailer.lang-tl.php
+│   │       │       phpmailer.lang-tr.php
+│   │       │       phpmailer.lang-uk.php
+│   │       │       phpmailer.lang-ur.php
+│   │       │       phpmailer.lang-vi.php
+│   │       │       phpmailer.lang-zh.php
+│   │       │       phpmailer.lang-zh_cn.php
+│   │       │
+│   │       └───src
+│   │               DSNConfigurator.php
+│   │               Exception.php
+│   │               OAuth.php
+│   │               OAuthTokenProvider.php
+│   │               PHPMailer.php
+│   │               POP3.php
+│   │               SMTP.php
+│   │
+│   ├───helpers
+│   │       i18n.php
+│   │
+│   ├───lang
+│   │       en.php
+│   │       es.php
+│   │
+│   ├───models
+│   │       Booking.php
+│   │       Excursion.php
+│   │       Package.php
+│   │       Transfer.php
+│   │       User.php
+│   │
+│   └───views
+│       ├───admin
+│       │   │   dashboard.php
+│       │   │
+│       │   ├───bookings
+│       │   │       cancel.php
+│       │   │       create.php
+│       │   │       detail.php
+│       │   │       index.php
+│       │   │       success.php
+│       │   │
+│       │   ├───clients
+│       │   │       index.php
+│       │   │       view.php
+│       │   │
+│       │   ├───excursions
+│       │   │       create.php
+│       │   │       edit.php
+│       │   │       index.php
+│       │   │
+│       │   ├───packages
+│       │   │       create.php
+│       │   │       edit.php
+│       │   │       index.php
+│       │   │
+│       │   └───transfers
+│       │           create.php
+│       │           edit.php
+│       │           index.php
+│       │
+│       ├───auth
+│       │       login.php
+│       │       register.php
+│       │
+│       ├───booking
+│       │       cancel.php
+│       │       create.php
+│       │       success.php
+│       │
+│       ├───contact
+│       │       index.php
+│       │
+│       ├───dashboard
+│       │       bookings.php
+│       │       booking_detail.php
+│       │       index.php
+│       │       profile.php
+│       │
+│       ├───excursions
+│       │       index.php
+│       │
+│       ├───home
+│       │       index.php
+│       │
+│       ├───layouts
+│       │       footer.php
+│       │       header.php
+│       │       navigation.php
+│       │
+│       ├───packages
+│       │       index.php
+│       │
+│       └───transfers
+│               index.php
+│
+├───config
+│       config.php
+│       scrip
+│
+├───logs
+│       error.log
+│
+└───public
+    │   .htaccess
+    │   index.php
+    │
+    ├───assets
+    │   ├───css
+    │   │       custom.css
+    │   │       style.css
+    │   │
+    │   ├───images
+    │   │       logo-mini.png
+    │   │
+    │   ├───js
+    │   │       animations.js
+    │   │
+    │   └───uploads
+    │       ├───excursions
+    │       │       696d3d2fcef7b.jpeg
+    │       │       696d3efb83e43.jpeg
+    │       │       696d42c2641d8.jpeg
+    │       │       696edafeb10da.jpg
+    │       │
+    │       ├───packages
+    │       │       696d4ecc89316.jpeg
+    │       │       696d56e3bbe3c.jpeg
+    │       │       696eda55a7d5c.jpeg
+    │       │
+    │       └───transfers
+    │               transfer_1768691396.jpg
+    │               transfer_696c1bc0d8b4c.jpeg
+    │               transfer_696c1bc8abff5.jpeg
+    │
+    └───uploads
+        ├───excursions
+        ├───packages
+        └───transfers
+                transfer_1768691396.jpg
+                transfer_696c1bc0d8b4c.jpeg
+                transfer_696c1bc8abff5.jpeg
+

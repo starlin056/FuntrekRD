@@ -1,0 +1,11 @@
+# Dominican Travel - Git Ignore
+/logs/*.log
+/public/assets/uploads/excursions/*
+/public/assets/uploads/packages/*
+/public/assets/uploads/transfers/*
+/public/assets/uploads/proposals/*
+/public/uploads/*
+.DS_Store
+Thumbs.db
+*.tmp
+# config/config.php  <-- Comentado por si el repositorio es privado, pero se recomienda ignorar en repositorios públicos.

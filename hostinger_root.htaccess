@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Si alguien intenta entrar a la carpeta visiblemente, redirigirlo a la URL limpia
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /dominican_travel/public/([^\ ]*)
+    RewriteRule ^ https://funtrekrd.com/%1 [L,R=301]
+
+    # Redirigir internamente todo el trafico de la raiz hacia la carpeta del proyecto
+    RewriteCond %{REQUEST_URI} !^/dominican_travel/public/
+    RewriteRule ^(.*)$ /dominican_travel/public/$1 [L]
+</IfModule>

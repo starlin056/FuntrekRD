@@ -1,0 +1,427 @@
+/**
+ * ======================================================
+ *    VARIABLES DE COLOR (IDENTIDAD CARIBE)
+ * ======================================================
+ *
+ * @format
+ */
+:root {
+  --bg-color: #d1e8ff;
+  --shadow-light: #f0fbff;
+  --shadow-dark: #a6b9cc;
+  --accent-color: #0077b6;
+}
+
+/* Contenedor para las animaciones */
+.animate-slide-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+/* Animación desde la Derecha (Para Register) */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animación desde la Izquierda (Para Login) */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Estilo Neumórfico aplicado a las cards de Bootstrap */
+.neumorphic-card {
+  background-color: var(--bg-color) !important;
+  border-radius: 30px !important;
+  box-shadow:
+    9px 9px 16px var(--shadow-dark),
+    -9px -9px 16px var(--shadow-light) !important;
+  border: none !important;
+}
+
+.neumorphic-input {
+  background-color: var(--bg-color) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  box-shadow:
+    inset 5px 5px 10px var(--shadow-dark),
+    inset -5px -5px 10px var(--shadow-light) !important;
+  padding: 12px 20px !important;
+}
+
+.btn-neu {
+  background-color: var(--bg-color) !important;
+  color: var(--accent-color) !important;
+  font-weight: bold !important;
+  border-radius: 50px !important;
+  border: none !important;
+  box-shadow:
+    5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light) !important;
+  transition: all 0.2s ease;
+}
+
+.btn-neu:active {
+  box-shadow:
+    inset 3px 3px 7px var(--shadow-dark),
+    inset -3px -3px 7px var(--shadow-light) !important;
+}
+:root {
+  --primary-color: #0077b6;
+  --secondary-color: #6c757d;
+  --success-color: #2ec4b6;
+  --warning-color: #ffd166;
+  --danger-color: #e63946;
+  --light-color: #f8f9fa;
+  --dark-color: #003049;
+
+  --header-bg: rgba(0, 96, 140, 0.25);
+  --header-bg-solid: rgba(0, 96, 140, 0.95);
+  --header-text: #ffffff;
+
+  /* 🔴 ESTA FALTABA */
+  --navbar-height: 90px;
+}
+
+/* ======================================================
+   RESET BÁSICO
+====================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======================================================
+   BODY / TIPOGRAFÍA
+====================================================== */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f4f7fb;
+  color: #333;
+  line-height: 1.6;
+
+  /* 👇 Compensa navbar fija */
+  padding-top: var(--navbar-height);
+}
+
+/* ======================================================
+   NAVBAR MODERNA (CARIBE PREMIUM)
+====================================================== */
+.navbar-modern {
+  background: var(--header-bg);
+  backdrop-filter: blur(15px);
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+  padding: 20px 0;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1080;
+}
+
+.navbar-modern.scrolled {
+  background: var(--header-bg-solid);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* LINKS NAVBAR */
+.nav-link-modern {
+  color: var(--header-text);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-modern .dropdown-menu {
+  z-index: 1100;
+}
+
+.navbar-logo {
+  height: 50px; /* tamaño ideal para navbar */
+  width: auto;
+  object-fit: contain;
+  margin-top: -5px; /* ajuste fino vertical */
+}
+
+.nav-link-modern:hover,
+.nav-link-modern.active {
+  color: var(--warning-color);
+}
+
+.nav-link-modern::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--warning-color);
+  transition: width 0.3s ease;
+}
+
+.nav-link-modern:hover::after,
+.nav-link-modern.active::after {
+  width: 100%;
+}
+
+/* BOTÓN CTA NAVBAR */
+.btn-cta {
+  background: linear-gradient(135deg, #ffd166, #ff9f1c);
+  color: #003049;
+  font-weight: 600;
+  border-radius: 30px;
+  padding: 10px 22px;
+  box-shadow: 0 8px 20px rgba(255, 209, 102, 0.45);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 209, 102, 0.6);
+}
+
+/* ======================================================
+   HERO SECTION (CORREGIDO PARA NAVBAR FIXED)
+====================================================== */
+.hero-section {
+  position: relative;
+}
+
+.hero-bg {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 96, 140, 0.55),
+      rgba(0, 180, 216, 0.45),
+      rgba(144, 224, 239, 0.35)
+    ),
+    url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80');
+
+  background-size: cover;
+  background-position: center;
+
+  /* 👇 CLAVE: no se mete debajo del navbar */
+  min-height: calc(120vh - var(--navbar-height));
+  padding-top: var(--navbar-height);
+
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* OLA HERO */
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  filter: drop-shadow(0 -6px 6px rgba(0, 100, 160, 0.15));
+}
+
+/* IMAGEN HERO */
+.hero-front-image {
+  max-width: 450px;
+  border-radius: 22px;
+  box-shadow:
+    0 25px 50px rgba(0, 40, 80, 0.35),
+    0 10px 20px rgba(0, 120, 200, 0.25);
+  transform: rotate(3deg);
+  transition:
+    opacity 1s ease-in-out,
+    transform 0.6s ease;
+}
+
+.hero-front-image:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* ======================================================
+   CONTENEDORES
+====================================================== */
+.container {
+  max-width: 1200px;
+}
+
+/* ======================================================
+   CARDS / TARJETAS
+====================================================== */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* ======================================================
+   BOTONES GENERALES
+====================================================== */
+.btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #005f8a;
+}
+
+.btn-orange {
+  color: #ff7a00;
+  border: 1px solid #ff7a00;
+  background-color: transparent;
+}
+
+.btn-orange:hover {
+  background-color: #ff7a00;
+  color: #ffffff;
+}
+
+/* ======================================================
+   FOOTER MODERNO
+====================================================== */
+.footer-modern {
+  background: linear-gradient(180deg, #003049, #002233);
+  color: #ffffff;
+}
+
+.footer-modern a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.footer-modern a:hover {
+  color: var(--warning-color);
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 992px) {
+  .card img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --navbar-height: 84px;
+  }
+
+  body {
+    padding-top: var(--navbar-height);
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  :root {
+    --bg-color: #d1e8ff;
+    --shadow-light: #f0fbff;
+    --shadow-dark: #a6b9cc;
+    --accent-color: #0077b6;
+  }
+
+  /* Contenedor para las animaciones */
+  .animate-slide-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  /* Animación desde la Derecha (Para Register) */
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Animación desde la Izquierda (Para Login) */
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Estilo Neumórfico aplicado a las cards de Bootstrap */
+  .neumorphic-card {
+    background-color: var(--bg-color) !important;
+    border-radius: 30px !important;
+    box-shadow:
+      9px 9px 16px var(--shadow-dark),
+      -9px -9px 16px var(--shadow-light) !important;
+    border: none !important;
+  }
+
+  .neumorphic-input {
+    background-color: var(--bg-color) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    box-shadow:
+      inset 5px 5px 10px var(--shadow-dark),
+      inset -5px -5px 10px var(--shadow-light) !important;
+    padding: 12px 20px !important;
+  }
+
+  .btn-neu {
+    background-color: var(--bg-color) !important;
+    color: var(--accent-color) !important;
+    font-weight: bold !important;
+    border-radius: 50px !important;
+    border: none !important;
+    box-shadow:
+      5px 5px 10px var(--shadow-dark),
+      -5px -5px 10px var(--shadow-light) !important;
+    transition: all 0.2s ease;
+  }
+
+  .btn-neu:active {
+    box-shadow:
+      inset 3px 3px 7px var(--shadow-dark),
+      inset -3px -3px 7px var(--shadow-light) !important;
+  }
+}

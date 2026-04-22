@@ -1,0 +1,46 @@
+# Implementation Plan - Fix Gallery Deletion Bug
+
+The user reported that deleting a single image from the pre-upload gallery removes all of them. I will refactor the logic to use a more stable approach using a JavaScript array to manage the state.
+
+## User Review Required
+
+> [!IMPORTANT]
+> I will be switching the gallery management logic from direct `DataTransfer` manipulation to using a standard JavaScript array (`pendingFiles`). This avoids potential browser-specific quirks with clearing and re-adding items to a `DataTransferItemList`.
+
+## Proposed Changes
+
+### 1. Robust Gallery State Management (All Admin Views)
+#### [MODIFY] [packages/create.php](file:///c:/xampp/htdocs/dominican_travel/app/views/admin/packages/create.php)
+#### [MODIFY] [packages/edit.php](file:///c:/xampp/htdocs/dominican_travel/app/views/admin/packages/edit.php)
+#### [MODIFY] [excursions/create.php](file:///c:/xampp/htdocs/dominican_travel/app/views/admin/excursions/create.php)
+#### [MODIFY] [excursions/edit.php](file:///c:/xampp/htdocs/dominican_travel/app/views/admin/excursions/edit.php)
+
+- Replace the `accumulator` (`DataTransfer`) with a local `pendingFiles` array.
+- Update `updateGalleryPreview` to:
+    - Clear the preview grid.
+    - Loop through `pendingFiles`.
+    - Create a *fresh* `DataTransfer` object.
+    - Append each file to the new `DataTransfer`.
+    - Assign the new `DataTransfer.files` to the `input.files`.
+    - Generate the preview cards.
+- Update the deletion logic for *new* photos to simply `splice` from the `pendingFiles` array and call `updateGalleryPreview`.
+
+### 2. Harmonize Existing Gallery Deletion (Edit Views)
+#### [MODIFY] [packages/edit.php](file:///c:/xampp/htdocs/dominican_travel/app/views/admin/packages/edit.php)
+#### [MODIFY] [excursions/edit.php](file:///c:/xampp/htdocs/dominican_travel/app/views/admin/excursions/edit.php)
+
+- Adopt the delegated event listener approach for *existing* photos (the one the user manually added to `excursions/edit.php`) to ensure consistency and prevent potential conflicts between scripts.
+
+## Verification Plan
+
+### Manual Verification
+1.  **Admin Create/Edit (New Uploads)**:
+    - Select 3 photos.
+    - Delete the middle one.
+    - Verify that 2 photos remain in the preview.
+    - Add 1 more. Verify 3 photos total.
+    - Save and check that exactly those 3 photos are uploaded.
+2.  **Admin Edit (Existing Photos)**:
+    - Delete an existing photo.
+    - Verify it stays "marked for deletion" (semi-transparent) while other photos remain active.
+    - Verify the photo is actually deleted from the server after saving.

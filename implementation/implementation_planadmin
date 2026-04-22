@@ -1,0 +1,38 @@
+# Plan de Rediseño: Dashboard Administrativo "Premium"
+
+## Objetivo
+Transformar el Dashboard principal en un centro de mando profesional con alta calidad estética, mejor jerarquía de información y funcionalidades de visualización mejoradas (scroll y sticky headers).
+
+## User Review Required
+
+> [!IMPORTANT]
+> El rediseño se centrará en la tarjeta de "Reservas Recientes" para permitir una navegación fluida sin que la página crezca infinitamente. Además, aplicaré el mismo estilo "Premium" de avatares que usamos en las solicitudes personalizadas para mantener la consistencia.
+
+## Cambios Propuestos
+
+### CSS Modular
+#### [MODIFY] [public/assets/css/modules/admin-dashboard.css](file:///c:/xampp/htdocs/dominican_travel/public/assets/css/modules/admin-dashboard.css)
+- **Métricas**: Añadir degradados modernos y efectos de elevación más sofisticados.
+- **Tabla de Reservas**:
+    - Implementar un área de scroll con altura fija (ej. 500px).
+    - Hacer que la cabecera de la tabla sea adhesiva (`sticky`).
+    - Añadir estilos para avatares de clientes (iniciales con colores).
+- **Widgets**: Refinar el espaciado y sombreado de todas las tarjetas para que se sientan como una "suite" cohesionada.
+
+---
+
+### Vistas Administrativas
+#### [MODIFY] [app/views/admin/dashboard.php](file:///c:/xampp/htdocs/dominican_travel/app/views/admin/dashboard.php)
+- **Reservas Recientes**:
+    - Envolver la tabla en el nuevo contenedor con scroll.
+    - Modificar la primera columna para usar la celda de "Cliente con Avatar".
+    - Ordenar y asegurar que los estados (Confirmada, Pendiente, etc.) usen colores vibrantes y legibles.
+- **Acciones Rápidas**: Reorganizar la cuadrícula para que los iconos tengan mayor protagonismo y el texto sea más descriptivo.
+
+## Verificación Plan
+
+### Manual Verification
+- Accederé al Dashboard y verificaré que las 4 métricas superiores tengan el nuevo diseño de degradado.
+- Confirmaré que la tabla de reservas sea scrollable y que la cabecera no se pierda al bajar.
+- Validaré que los avatares se carguen con las iniciales correctas de los clientes de las reservas.
+- Verificaré la visualización correcta en dispositivos móviles (responsive).

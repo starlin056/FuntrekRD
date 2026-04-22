@@ -1,0 +1,43 @@
+# Dominican Travel - Hostinger Production HTACCESS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirigir a HTTPS siempre
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Permitir archivos PWA explícitamente
+    <Files "manifest.json">
+        <IfModule mod_authz_core.c>
+            Require all granted
+        </IfModule>
+        <IfModule !mod_authz_core.c>
+            Allow from all
+        </IfModule>
+    </Files>
+
+    <Files "sw.js">
+        <IfModule mod_authz_core.c>
+            Require all granted
+        </IfModule>
+        <IfModule !mod_authz_core.c>
+            Allow from all
+        </IfModule>
+    </Files>
+
+    # Evitar que se listen directorios
+    Options -Indexes
+
+    # Si el archivo o directorio existe, servirlo directamente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # De lo contrario, enviar todo a index.php
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+
+# Tipos MIME para PWA
+<IfModule mod_mime.c>
+    AddType application/manifest+json  json
+    AddType application/javascript    js
+</IfModule>

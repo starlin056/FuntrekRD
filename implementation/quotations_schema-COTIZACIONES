@@ -1,0 +1,45 @@
+-- Company Settings
+CREATE TABLE IF NOT EXISTS `settings` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `company_name` VARCHAR(255) NOT NULL,
+    `company_address` TEXT,
+    `company_phone` VARCHAR(100),
+    `company_email` VARCHAR(255),
+    `company_logo` VARCHAR(255),
+    `default_tax_rate` DECIMAL(5,2) DEFAULT 18.00,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Quotations
+CREATE TABLE IF NOT EXISTS `quotations` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `quote_number` VARCHAR(50) UNIQUE NOT NULL,
+    `customer_name` VARCHAR(255) NOT NULL,
+    `customer_email` VARCHAR(255),
+    `customer_phone` VARCHAR(50),
+    `travel_date` DATE,
+    `subtotal` DECIMAL(10,2) NOT NULL DEFAULT 0,
+    `tax_amount` DECIMAL(10,2) NOT NULL DEFAULT 0,
+    `total_price` DECIMAL(10,2) NOT NULL DEFAULT 0,
+    `notes` TEXT,
+    `status` ENUM('draft', 'sent', 'confirmed', 'expired') DEFAULT 'draft',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Quotation Line Items
+CREATE TABLE IF NOT EXISTS `quotation_items` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `quotation_id` INT NOT NULL,
+    `item_type` ENUM('package', 'excursion', 'transfer', 'custom') NOT NULL,
+    `item_id` INT DEFAULT NULL,
+    `description` TEXT NOT NULL,
+    `quantity` INT DEFAULT 1,
+    `unit_price` DECIMAL(10,2) NOT NULL,
+    `total` DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (`quotation_id`) REFERENCES `quotations`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Insert default settings
+INSERT INTO `settings` (`company_name`, `company_address`, `company_phone`, `company_email`, `default_tax_rate`) 
+VALUES ('Dominican Travel Agency', 'Calle Ejemplo #123, Santo Domingo', '+1-809-000-0000', 'info@dominicantravel.com', 18.00);
