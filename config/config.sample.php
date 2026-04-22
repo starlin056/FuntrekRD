@@ -4,7 +4,7 @@
 
 if (!defined('APP_NAME')) {
     define('APP_NAME', 'Dominican Travel Agency');
-    define('APP_VERSION', '1.0.0');
+    define('APP_VERSION', '5.0.0');
 
     // Detección de entorno (Local vs Producción)
     if ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1') {
