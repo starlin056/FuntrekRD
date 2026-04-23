@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dom-travel-v2';
+const CACHE_NAME = 'funtrek-rd-v1';
 const ASSETS = [
   'index.php',
   'assets/css/style.css'

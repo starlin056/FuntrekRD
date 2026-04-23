@@ -34,7 +34,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Dominican Travel">
+    <meta name="apple-mobile-web-app-title" content="Funtrek RD">
     <link rel="apple-touch-icon" href="<?= APP_URL ?>/assets/images/pwa-icon-512.png">
 
     <!-- Google Translate API -->

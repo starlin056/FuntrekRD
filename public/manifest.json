@@ -1,25 +1,36 @@
 {
-  "name": "Dominican Travel",
-  "short_name": "DomTravel",
+  "name": "Funtrek RD",
+  "short_name": "Funtrek RD",
   "description": "Tu mejor experiencia de viaje en República Dominicana",
-  "start_url": "./",
+  "start_url": "/index.php",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#0077B6",
-  "id": "/dominican_travel/",
+  "orientation": "portrait",
+  "id": "/",
+  "scope": "/",
+  "categories": ["travel", "tourism"],
   "icons": [
     {
       "src": "assets/images/pwa-icon-512.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "assets/images/pwa-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/readme/preview.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Funtrek RD Home"
     }
   ]
 }

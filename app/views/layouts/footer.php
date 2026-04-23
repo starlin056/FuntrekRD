@@ -48,7 +48,7 @@
         <img src="<?= APP_URL ?>/assets/images/pwa-icon-512.png" style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;" alt="App Icon">
         <div style="flex: 1;">
             <h6 style="margin: 0; font-weight: bold; color: #1D3557; font-size: 16px;">Instalar App</h6>
-            <p style="margin: 0; color: #666; font-size: 13px;">Añade Dominican Travel a tu pantalla de inicio.</p>
+            <p style="margin: 0; color: #666; font-size: 13px;">Añade Funtrek RD a tu pantalla de inicio.</p>
         </div>
         <button id="pwa-install-btn" style="background: #0077B6; color: #fff; border: none; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 14px;">Instalar</button>
         <button id="pwa-close-btn" style="background: none; border: none; color: #999; font-size: 24px; padding: 0 5px;">&times;</button>
@@ -109,7 +109,7 @@
 
     // Detectar si ya está instalada
     window.addEventListener('appinstalled', (evt) => {
-        console.log('Dominican Travel App instalada con éxito');
+        console.log('Funtrek RD App instalada con éxito');
         installPrompt.style.display = 'none';
     });
 </script>
