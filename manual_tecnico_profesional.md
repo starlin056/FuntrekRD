@@ -123,4 +123,4 @@ El proyecto Dominican Travel representa una herramienta sólida y segura, constr
 
 ---
 **Fecha de Entrega:** 22 de Abril de 2026
-**Responsable Técnico:** Ingeniería de Software Dominican Travel
+**Responsable Técnico:** @pedro urena
